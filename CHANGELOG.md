@@ -2,6 +2,16 @@
 
 <br>
 
+## v3.5.1
+
+### Added
+- `DriverWrapper.is_cdp` flag to identify CDP-connected driver instances
+- `PlayDriver.quit` graceful error handling for CDP contexts; tracing skip when `is_cdp` is set
+- `CoreDriver.quit` graceful error handling for externally-managed browsers when `is_cdp` is set
+- `PlayDriver.get_inner_window_size` null-safe viewport handling (returns `Size(0, 0)` when viewport is `None`)
+
+---
+
 ## v3.5.0
 *Release date: 2026-04-22*
 
@@ -26,10 +36,6 @@
 *Release date: 2026-04-21*
 
 ### Added
-- `DriverWrapper.is_cdp` flag to identify CDP-connected driver instances
-- `PlayDriver.quit` graceful error handling for CDP contexts; tracing skip when `is_cdp` is set
-- `CoreDriver.quit` graceful error handling for externally-managed browsers when `is_cdp` is set
-- `PlayDriver.get_inner_window_size` null-safe viewport handling (returns `Size(0, 0)` when viewport is `None`)
 - `set_local_storage_item(items)` / `set_session_storage_item(items)` — set one or more key/value pairs in localStorage / sessionStorage
 - `get_local_storage_item(key)` / `get_session_storage_item(key)` — retrieve a single item by key (`None` if missing)
 - `get_local_storage_items()` / `get_session_storage_items()` — retrieve all items as a dict
