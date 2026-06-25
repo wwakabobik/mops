@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import contextlib
 from functools import cached_property
 import time
 from typing import TYPE_CHECKING, Any
@@ -224,10 +225,8 @@ class CoreDriver(Logging, DriverWrapperABC):
         :return: :obj:`None`
         """
         if self.is_cdp:
-            try:
+            with contextlib.suppress(SeleniumWebDriverException):
                 self.driver.quit()
-            except SeleniumWebDriverException:
-                pass
         else:
             self.driver.quit()
 

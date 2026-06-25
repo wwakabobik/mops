@@ -180,15 +180,11 @@ class PlayDriver(Logging, DriverWrapperABC):
                 self.context.tracing.stop(path=trace_path)
 
         if self.is_cdp:
-            try:
+            with contextlib.suppress(PlaywrightError):
                 self._base_driver.close()
-            except PlaywrightError:
-                pass
 
-            try:
+            with contextlib.suppress(PlaywrightError):
                 self.context.close()
-            except PlaywrightError:
-                pass
         else:
             self._base_driver.close()
             self.context.close()
